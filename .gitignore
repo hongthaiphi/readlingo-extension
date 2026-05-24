@@ -1,0 +1,17 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Build artifacts
+*.zip
+*.crx
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node (nếu thêm tooling sau này)
+node_modules/

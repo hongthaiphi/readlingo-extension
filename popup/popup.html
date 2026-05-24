@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="popup.css" />
+  <title>ReadLingo</title>
+</head>
+<body>
+  <nav class="tabs">
+    <button class="tab active" data-tab="words">Từ của tôi</button>
+    <button class="tab" data-tab="review">Ôn tập</button>
+    <button class="tab" data-tab="stats">Thống kê</button>
+    <button class="tab" data-tab="settings">⚙</button>
+  </nav>
+
+  <!-- Tab: Từ của tôi -->
+  <section id="tab-words" class="panel active">
+    <div class="toolbar">
+      <input id="search" type="search" placeholder="Tìm từ…" />
+      <select id="filter-status">
+        <option value="">Tất cả</option>
+        <option value="new">Mới</option>
+        <option value="learning">Đang học</option>
+        <option value="known">Đã biết</option>
+      </select>
+    </div>
+    <div id="word-list" class="word-list"></div>
+    <div class="footer">
+      <button id="export" class="btn">Export CSV</button>
+      <span id="count" class="muted"></span>
+    </div>
+  </section>
+
+  <!-- Tab: Ôn tập -->
+  <section id="tab-review" class="panel">
+    <div id="review-area" class="review-area">
+      <div id="review-empty" class="empty">Không có từ cần ôn hôm nay 🎉</div>
+      <div id="flashcard" class="flashcard hidden">
+        <div class="fc-progress"><span id="fc-progress"></span></div>
+        <div id="fc-word" class="fc-word"></div>
+        <div id="fc-ipa" class="fc-ipa"></div>
+        <button id="fc-reveal" class="btn btn-primary">Hiện nghĩa</button>
+        <div id="fc-back" class="fc-back hidden">
+          <div id="fc-meaning" class="fc-meaning"></div>
+          <div id="fc-example" class="fc-example"></div>
+          <div class="fc-actions">
+            <button id="fc-again" class="btn btn-fc-red">
+              Không nhớ<span id="fc-iv-again" class="fc-iv"></span>
+            </button>
+            <button id="fc-hard" class="btn btn-fc-orange">
+              Khó nhớ<span id="fc-iv-hard" class="fc-iv"></span>
+            </button>
+            <button id="fc-easy" class="btn btn-fc-green">
+              Dễ nhớ<span id="fc-iv-easy" class="fc-iv"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tab: Thống kê -->
+  <section id="tab-stats" class="panel">
+    <div class="stat-grid">
+      <div class="stat-card"><div id="s-total" class="stat-num">0</div><div class="stat-label">Tổng số từ</div></div>
+      <div class="stat-card"><div id="s-streak" class="stat-num">0</div><div class="stat-label">Ngày streak</div></div>
+      <div class="stat-card"><div id="s-new" class="stat-num">0</div><div class="stat-label">Mới</div></div>
+      <div class="stat-card"><div id="s-known" class="stat-num">0</div><div class="stat-label">Đã biết</div></div>
+    </div>
+    <h3>Nguồn lưu nhiều nhất</h3>
+    <div id="top-sources" class="top-sources"></div>
+  </section>
+
+  <!-- Tab: Cài đặt -->
+  <section id="tab-settings" class="panel">
+
+    <div class="settings-group">
+      <label class="settings-label">Engine dịch</label>
+      <div class="engine-options">
+        <label class="engine-option">
+          <input type="radio" name="engine" value="mymemory" />
+          <div class="engine-card">
+            <span class="engine-name">MyMemory</span>
+            <span class="engine-desc">Miễn phí, không cần key. Chất lượng khá.</span>
+          </div>
+        </label>
+        <label class="engine-option">
+          <input type="radio" name="engine" value="deepl" />
+          <div class="engine-card">
+            <span class="engine-name">DeepL Free ✨</span>
+            <span class="engine-desc">Chất lượng cao hơn nhiều. Cần API key miễn phí.</span>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <div class="settings-group" id="deepl-key-group">
+      <label class="settings-label" for="deepl-key">
+        DeepL API Key
+        <a id="deepl-link" href="#" class="settings-link">Lấy key miễn phí →</a>
+      </label>
+      <div class="key-row">
+        <input id="deepl-key" type="password" placeholder="Dán API key vào đây…" autocomplete="off" />
+        <button id="toggle-key-vis" class="btn btn-icon" title="Hiện/ẩn key">👁</button>
+      </div>
+      <div id="deepl-status" class="deepl-status"></div>
+    </div>
+
+    <div class="settings-group">
+      <label class="settings-label">Xoá cache dịch</label>
+      <div class="settings-row">
+        <span class="muted">Buộc dịch lại tất cả câu (dùng khi đổi engine)</span>
+        <button id="clear-cache" class="btn">Xoá cache</button>
+      </div>
+    </div>
+
+    <button id="save-settings" class="btn btn-primary btn-full">Lưu cài đặt</button>
+    <div id="settings-saved" class="save-notice hidden">✓ Đã lưu</div>
+
+  </section>
+
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

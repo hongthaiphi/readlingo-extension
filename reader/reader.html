@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ReadLingo</title>
+  <link rel="stylesheet" href="reader.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-left">
+      <h1 id="doc-title">Đang tải…</h1>
+      <div id="doc-meta" class="doc-meta"></div>
+    </div>
+    <div class="topbar-right">
+      <button id="stop-play" class="btn btn-stop hidden" title="Dừng đọc">■ Dừng</button>
+      <button id="toggle-vi" class="btn" title="Ẩn/hiện cột dịch">Ẩn dịch</button>
+      <button id="toggle-theme" class="btn" title="Đổi giao diện sáng/tối">🌓</button>
+    </div>
+  </header>
+
+  <div id="progress" class="progress"><div id="progress-bar"></div></div>
+
+  <main id="reader" class="reader"></main>
+
+  <nav class="pager">
+    <button id="prev" class="btn">‹ Trước</button>
+    <span id="pageinfo">1 / 1</span>
+    <button id="next" class="btn">Sau ›</button>
+  </nav>
+
+  <!-- Popup từ khó -->
+  <div id="word-popup" class="word-popup hidden">
+    <div class="wp-head">
+      <span id="wp-word" class="wp-word"></span>
+      <button id="wp-audio" class="wp-icon" title="Phát âm">🔊</button>
+    </div>
+    <div id="wp-ipa" class="wp-ipa"></div>
+    <div id="wp-pos" class="wp-pos"></div>
+    <div id="wp-meaning" class="wp-meaning">Đang tra…</div>
+    <div class="wp-actions">
+      <button id="wp-save" class="btn btn-primary">+ Cho vào danh sách học</button>
+      <button id="wp-known" class="btn">Đã biết</button>
+    </div>
+  </div>
+
+  <script type="module" src="reader.js"></script>
+</body>
+</html>

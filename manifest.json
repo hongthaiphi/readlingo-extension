@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "ReadLingo – Bilingual Reader",
+  "version": "0.1.0",
+  "description": "Đọc song ngữ Anh-Việt bất kỳ trang web nào, highlight từ khó và lưu vào danh sách học. Alternative miễn phí cho Language Reactor.",
+  "permissions": [
+    "contextMenus",
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://api.dictionaryapi.dev/*",
+    "https://api.mymemory.translated.net/*",
+    "https://api-free.deepl.com/*"
+  ],
+  "background": {
+    "service_worker": "background/service-worker.js",
+    "type": "module"
+  },
+  "icons": {
+    "16":  "icons/icon16.png",
+    "48":  "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_title": "ReadLingo - Danh sách từ",
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16":  "icons/icon16.png",
+      "48":  "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'none'; base-uri 'none';"
+  }
+}
