@@ -186,6 +186,9 @@ const DEEPL_SIGNUP = "https://www.deepl.com/pro-api";
 async function loadSettings() {
   const s = await getSettings();
 
+  // Toggle gạch chân
+  $("#highlight-enabled").checked = s.highlightEnabled !== false;
+
   // Chọn radio đúng engine
   const radio = $(`input[name="engine"][value="${s.translationApi || "mymemory"}"]`);
   if (radio) radio.checked = true;
@@ -233,7 +236,11 @@ $("#save-settings").onclick = async () => {
     showDeeplStatus("Key hợp lệ ✓", "ok");
   }
 
-  await setSettings({ translationApi: engine, deeplKey: key });
+  await setSettings({
+    translationApi: engine,
+    deeplKey: key,
+    highlightEnabled: $("#highlight-enabled").checked,
+  });
   // Xoá cache cũ để dịch lại với engine mới
   await chrome.storage.local.remove("translationCache");
 

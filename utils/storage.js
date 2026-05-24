@@ -7,6 +7,7 @@ const DEFAULT_SETTINGS = {
   deeplKey: "",               // DeepL Free API key (https://www.deepl.com/pro-api)
   theme: "auto",
   dailyGoal: 10,
+  highlightEnabled: true,     // gạch chân từ vựng trên mọi trang
 };
 
 export async function getSettings() {
